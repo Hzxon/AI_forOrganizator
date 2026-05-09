@@ -1,0 +1,66 @@
+whatsapp:
+  # Replace with YOUR WhatsApp number (e.g., +1234567890)
+  owner_number: "+1234567890"
+  # List groups/chats to monitor (exact names as they appear in WhatsApp)
+  monitored_groups:
+    - "My Study Group"
+    - "Project Team Alpha"
+  # Monitor private messages from trusted contacts? (true/false)
+  monitor_private: true
+
+reminders:
+  # Default time for daily reminders (24-hour format)
+  default_time: "19:00"
+  # Hours before deadline to send reminders (48h, 24h, etc.)
+  escalation_hours: [48, 24, 6, 2]
+  # Max reminders per event (prevents spam)
+  max_reminders: 5
+  # Quiet hours (no notifications sent between these times)
+  quiet_hours:
+    start: "22:00"
+    end: "07:00"
+
+extraction:
+  # Your timezone (for date parsing)
+  timezone: "Asia/Jakarta"
+  # Minimum confidence score to extract an event (0.0-1.0)
+  confidence_threshold: 0.7
+  # Keywords that trigger event detection
+  event_keywords:
+    - "meeting"
+    - "deadline"
+    - "event"
+    - "party"
+    - "conference"
+    - "workshop"
+    - "seminar"
+    - "presentation"
+    - "interview"
+    - "exam"
+    - "submission"
+    - "launch"
+  # Keywords that trigger action item detection
+  action_keywords:
+    - "need to"
+    - "must"
+    - "remember to"
+    - "don't forget"
+    - "task"
+    - "action item"
+    - "to do"
+    - "prepare"
+    - "submit"
+    - "complete"
+  # Keywords that help detect locations
+  location_keywords:
+    - "at"
+    - "in"
+    - "room"
+    - "building"
+    - "venue"
+    - "location"
+    - "place"
+
+database:
+  # Path to SQLite database (relative to project root)
+  path: "storage/events.db"
