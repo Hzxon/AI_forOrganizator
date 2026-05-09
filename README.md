@@ -1,8 +1,6 @@
 # 🎯 Event Organizer — Agentic AI WhatsApp Monitor
 
-> **A Hermes-powered student dashboard component** — turning group chaos into structured deadlines, memory, and action.
-> 
-> *Built for students like you — integrates with your eLearning portal ([elearning.umn.ac.id](https://elearning.umn.ac.id)) and tracks assignments like your **Machine Learning deadline: 12 May 2026**.*
+> **A Hermes-powered automation tool** — turning group chaos into structured deadlines, memory, and action.
 
 A multi-agent AI system that monitors WhatsApp groups, extracts events/action items automatically, and sends you smart reminders — designed for personal productivity and deadline tracking.
 
@@ -255,14 +253,13 @@ python3 scripts/init_db.py
 
 ## 🌐 Why This Matters
 
-This isn’t just another WhatsApp bot — it’s a **personal deadline-tracking system** that turns group chaos into structured reminders and action items.
+This isn't just another WhatsApp bot — it's a **personal deadline-tracking system** that turns group chaos into structured reminders and action items.
 
-- ✅ **Deadline-aware**: Automatically detects and tracks your ML assignment (**12 May 2026**) from group chats and Moodle announcements.
-- ✅ **eLearning-ready**: Designed to ingest from `elearning.umn.ac.id` (Moodle) — next step: auto-login + scrape course modules.
-- ✅ **Agentic, not generative**: Turns chat into *action* — not just summarizing, but scheduling, reminding, and organizing.
-- ✅ **Hermes-native**: Uses your existing infrastructure — no new APIs, no vendor lock-in.
+- ✅ **Deadline-aware**: Automatically detects events/deadlines from group chats using NLP
+- ✅ **Agentic, not generative**: Turns chat into *action* — not just summarizing, but scheduling, reminding, and organizing
+- ✅ **Hermes-native**: Uses your existing infrastructure — no new APIs, no vendor lock-in
 
-> 🎓 **You’re building the future of personal automation — one deadline, one reminder, one organized mind at a time.**
+> 🎯 **Turn chaos into clarity — one deadline, one reminder, one organized mind at a time.**
 
 ---
 
