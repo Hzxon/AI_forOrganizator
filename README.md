@@ -136,7 +136,7 @@ python3 agents/dispatcher.py process-queue
 - ✅ `tomorrow`, `today`, `next Monday`, `in 3 days`
 - ✅ `by Friday`, `this Thursday`
 - ✅ `May 20th`, `on June 5`
-- ✅ ISO format: `2026-05-15` → **ML Deadline: 2026-05-12**
+- ✅ ISO format: `2026-05-15`
 
 ### Times
 - ✅ `3pm`, `9am`, `14:00`, `09:30`
@@ -173,12 +173,12 @@ Quiet hours (default 22:00–07:00) prevent late-night notifications.
 # Daily reminder check at 7 PM
 hermes cron create "0 19 * * *" \
   --name "event-organizer-reminders" \
-  --prompt "cd /Users/hazron/1-Projects/AI_forOrganizator && python3 scripts/reminder_cron.py"
+  --prompt "cd <path>/AI_forOrganizator && python3 scripts/reminder_cron.py"
 
 # Morning summary at 8 AM
 hermes cron create "0 8 * * *" \
   --name "event-organizer-morning" \
-  --prompt "cd /Users/hazron/1-Projects/AI_forOrganizator && python3 agents/dispatcher.py summary"
+  --prompt "cd <path>/AI_forOrganizator && python3 agents/dispatcher.py summary"
 ```
 
 ---
@@ -266,12 +266,6 @@ This isn't just another WhatsApp bot — it's a **personal deadline-tracking sys
 ## 📜 License
 
 Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more information.
-
----
-
-## 🙌 Contributing
-
-Contributions welcome! See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for guidelines.
 
 ---
 
