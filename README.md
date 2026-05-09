@@ -4,7 +4,7 @@
 > 
 > *Built for students like you — integrates with your eLearning portal ([elearning.umn.ac.id](https://elearning.umn.ac.id)) and tracks assignments like your **Machine Learning deadline: 12 May 2026**.*
 
-A multi-agent AI system that monitors WhatsApp groups, extracts events/action items automatically, and sends you smart reminders — now enhanced as part of your [student operating system](https://github.com/Hzxon/110_ai_student_operating_system).
+A multi-agent AI system that monitors WhatsApp groups, extracts events/action items automatically, and sends you smart reminders — designed for personal productivity and deadline tracking.
 
 [![Hermes-powered](https://img.shields.io/badge/Hermes%20Agent-52489C?logo=hermes&logoColor=white)](https://hermes-agent.nousresearch.com) [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
 
@@ -48,60 +48,62 @@ WhatsApp Groups/DM → Hermes HTTP Gateway → Monitor Agent → Dispatcher Agen
 
 ---
 
-## 🚀 Quick Start
+## 🌍 For Public Users
 
-### 1. Prerequisites
+Want to use this for your own WhatsApp groups? Here's how:
 
-- Hermes Agent installed & configured ([docs](https://hermes-agent.nousresearch.com/docs))
-- WhatsApp bridge running (`bash ~/.hermes/scripts/start-whatsapp-bridge.sh`) → `http://localhost:3000`
-- Python 3.11+
-
-### 2. Configure
-
-Edit `config/settings.yaml`:
-```yaml
-whatsapp:
-  owner_number: "+62895621691627"  # ← YOUR number (already set)
-  monitored_groups:
-    - "Event Planning Committee"
-    - "Team Updates"
-    - "ML Study Group"  # ← Add your class group!
+### 1. Clone & Install
+```bash
+git clone https://github.com/Hzxon/AI_forOrganizator.git
+cd AI_forOrganizator
+pip install -r requirements.txt
 ```
 
-### 3. Initialize Database & Test
+### 2. Configure Securely
+**A. Hermes WhatsApp Bridge** (`~/.hermes/.env`):  
+Create this file in your home directory (never commit it!):
+```ini
+WHATSAPP_MODE=bot
+WHATSAPP_ALLOWED_USERS=+1234567890,+0987654321  # Your trusted numbers
+WHATSAPP_OWNER_NUMBER=+1234567890                 # Your number
+```
 
+**B. Project Config** (`config/settings.yaml`):  
+Copy the example and edit:
 ```bash
-# Create SQLite DB
+cp config/settings.yaml.example config/settings.yaml
+nano config/settings.yaml  # Replace placeholder number + groups
+```
+
+### 3. Start Dependencies
+```bash
+# Start WhatsApp bridge (uses ~/.hermes/.env)
+bash ~/.hermes/scripts/start-whatsapp-bridge.sh
+
+# Initialize database
 python3 scripts/init_db.py
-
-# Test extraction on sample text
-python3 scripts/test_extraction.py "ML assignment due May 12th"
-
-# Run end-to-end demo
-python3 demo.py
 ```
 
-### 4. Enable Hermes Integration
-
-In `scripts/reminder_cron.py`, replace the send function with Hermes CLI:
-```python
-# ✅ Recommended: Use Hermes agent for unified delivery
-import os
-os.system(f'hermes send --platform whatsapp --to "{phone}" "{message}"')
-```
-
-Then schedule your daily reminders:
+### 4. Schedule Reminders
 ```bash
-# 7 PM deadline reminders (your preference)
+# Daily reminders at 7 PM
 hermes cron create "0 19 * * *" \
   --name "event-organizer-reminders" \
-  --prompt "cd /Users/hazron/1-Projects/AI_forOrganizator && python3 scripts/reminder_cron.py"
+  --prompt "cd $(pwd) && python3 scripts/reminder_cron.py"
 
-# 8 AM morning summary
+# Morning summary at 8 AM
 hermes cron create "0 8 * * *" \
   --name "event-organizer-morning" \
-  --prompt "cd /Users/hazron/1-Projects/AI_forOrganizator && python3 agents/dispatcher.py summary"
+  --prompt "cd $(pwd) && python3 agents/dispatcher.py summary"
 ```
+
+### 5. Verify
+```bash
+python3 scripts/test_extraction.py "Submit report by Friday"
+python3 agents/dispatcher.py list-events --days 7
+```
+
+> 🔒 **Security Note**: Never commit `.env` files or real phone numbers to Git. Your `~/.hermes/.env` is automatically ignored.
 
 ---
 
@@ -253,14 +255,14 @@ python3 scripts/init_db.py
 
 ## 🌐 Why This Matters
 
-This isn’t just another WhatsApp bot — it’s the **event layer of your student operating system**.
+This isn’t just another WhatsApp bot — it’s a **personal deadline-tracking system** that turns group chaos into structured reminders and action items.
 
 - ✅ **Deadline-aware**: Automatically detects and tracks your ML assignment (**12 May 2026**) from group chats and Moodle announcements.
 - ✅ **eLearning-ready**: Designed to ingest from `elearning.umn.ac.id` (Moodle) — next step: auto-login + scrape course modules.
 - ✅ **Agentic, not generative**: Turns chat into *action* — not just summarizing, but scheduling, reminding, and organizing.
 - ✅ **Hermes-native**: Uses your existing infrastructure — no new APIs, no vendor lock-in.
 
-> 🎓 **You’re building the future of student AI — one deadline, one reminder, one organized mind at a time.**
+> 🎓 **You’re building the future of personal automation — one deadline, one reminder, one organized mind at a time.**
 
 ---
 
