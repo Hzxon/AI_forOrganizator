@@ -1,0 +1,54 @@
+whatsapp:
+  owner_number: "+62895621691627"
+  monitored_groups:
+    - "Event Planning Committee"
+    - "Team Updates"
+    - "Project Coordination"
+  monitor_private: true
+
+reminders:
+  default_time: "19:00"
+  escalation_hours: [48, 24, 6, 2]
+  max_reminders: 5
+  quiet_hours:
+    start: "22:00"
+    end: "07:00"
+
+extraction:
+  timezone: "Asia/Jakarta"
+  confidence_threshold: 0.7
+  event_keywords:
+    - "meeting"
+    - "deadline"
+    - "event"
+    - "party"
+    - "conference"
+    - "workshop"
+    - "seminar"
+    - "presentation"
+    - "interview"
+    - "exam"
+    - "submission"
+    - "launch"
+  action_keywords:
+    - "need to"
+    - "must"
+    - "remember to"
+    - "don't forget"
+    - "task"
+    - "action item"
+    - "to do"
+    - "prepare"
+    - "submit"
+    - "complete"
+  location_keywords:
+    - "at"
+    - "in"
+    - "room"
+    - "building"
+    - "venue"
+    - "location"
+    - "place"
+
+database:
+  path: "storage/events.db"

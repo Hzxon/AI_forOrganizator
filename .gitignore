@@ -1,0 +1,54 @@
+# OS/macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Environment
+.env
+.env.local
+.env.*
+.envrc
+
+# WhatsApp Bridge Artifacts
+storage/
+logs/
+session/
+bridge.log
+whatsapp-session/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+ipython_config.py
+
+# Node.js (if added later)
+node_modules/
+package-lock.json
+npm-debug.log
+
+# Editors & IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Hermes-specific
+~/.hermes/
+hermes-config/
+
+# Build & Dist
+build/
+dist/
+*.egg-info/
+
+# Logs & Temp
+*.log
+*.tmp
+*.temp
+
+# Local config overrides (safe to ignore)
+config/local.yaml
+config/dev.yaml
